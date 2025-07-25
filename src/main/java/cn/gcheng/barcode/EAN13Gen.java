@@ -55,6 +55,7 @@ public class EAN13Gen {
         try{
             // check send a 12 bit String
             BarcodeUtil_Jbarcode.createBarcode(codeJbarcode,new File(outputPathJbarcode),"");
+            // TODO change font to rewrite EAN13TextPainter and use it
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -64,6 +65,8 @@ public class EAN13Gen {
         try{
             FileOutputStream os = new FileOutputStream(new File(outputBarbecue));
             Barcode barcode = BarcodeFactory.createEAN13(codeJbarcode);
+            // TODO change font
+            // barcode.setFont();
             ImageUtil.encodeAndWrite(BarcodeImageHandler.getImage(barcode), ImageUtil.PNG, os, ImageUtil.DEFAULT_DPI, ImageUtil.DEFAULT_DPI);
             os.flush();
         }catch (Exception e){
